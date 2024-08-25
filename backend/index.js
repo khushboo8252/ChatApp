@@ -6,7 +6,6 @@ import userRoute from "./routes/userRoute.js";
 import messageRoute from "./routes/messageRoute.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import path from 'path';
 import { app,server } from "./socket/socket.js";
 dotenv.config({});
 
@@ -29,10 +28,7 @@ app.use("/api/v1/user",userRoute);
 app.use("/api/v1/message",messageRoute);
  
 
-app.get("/",(req,res)=>{
-    app.use(express.static(path.resolve(__dirname,"frontend","build")));
-    res.sendFile(path.resolve(__dirname,"frontend","build","index.html"));
-});
+
 
 server.listen(PORT, ()=>{
     connectDB();
